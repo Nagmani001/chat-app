@@ -19,6 +19,7 @@ type Props = {
   };
 };
 
+export const runtime = 'edge';
 const ConversationPage = ({ params: { conversationId } }: Props) => {
   const conversation = useQuery(api.conversation.get, { id: conversationId });
 
@@ -64,24 +65,24 @@ const ConversationPage = ({ params: { conversationId } }: Props) => {
         options={
           conversation.isGroup
             ? [
-                {
-                  label: "Leave group",
-                  destructive: false,
-                  onClick: () => setLeaveGroupDialogOpen(true),
-                },
-                {
-                  label: "Delete group",
-                  destructive: true,
-                  onClick: () => setDeleteGroupDialogOpen(true),
-                },
-              ]
+              {
+                label: "Leave group",
+                destructive: false,
+                onClick: () => setLeaveGroupDialogOpen(true),
+              },
+              {
+                label: "Delete group",
+                destructive: true,
+                onClick: () => setDeleteGroupDialogOpen(true),
+              },
+            ]
             : [
-                {
-                  label: "Remove friend",
-                  destructive: true,
-                  onClick: () => setRemoveFriendDialogOpen(true),
-                },
-              ]
+              {
+                label: "Remove friend",
+                destructive: true,
+                onClick: () => setRemoveFriendDialogOpen(true),
+              },
+            ]
         }
         setCallType={setCallType}
       />
@@ -92,8 +93,8 @@ const ConversationPage = ({ params: { conversationId } }: Props) => {
               ? conversation.otherMembers
               : []
             : conversation.otherMember
-            ? [conversation.otherMember]
-            : []
+              ? [conversation.otherMember]
+              : []
         }
         callType={callType}
         setCallType={setCallType}

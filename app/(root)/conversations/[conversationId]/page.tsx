@@ -19,7 +19,6 @@ type Props = {
   };
 };
 
-export const runtime = 'edge';
 const ConversationPage = ({ params: { conversationId } }: Props) => {
   const conversation = useQuery(api.conversation.get, { id: conversationId });
 
